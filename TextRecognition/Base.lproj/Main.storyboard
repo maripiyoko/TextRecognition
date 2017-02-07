@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,16 +22,31 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="0J7-SF-5x3">
-                                <rect key="frame" x="16" y="20" width="343" height="264"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="hogehogehogehoge" textAlignment="justified" translatesAutoresizingMaskIntoConstraints="NO" id="0J7-SF-5x3">
+                                <rect key="frame" x="16" y="20" width="343" height="589"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZZ7-pp-Feq">
+                                <rect key="frame" x="16" y="617" width="343" height="30"/>
+                                <state key="normal" title="CAMERA">
+                                    <color key="titleShadowColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cameraButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ATq-st-HDW"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="ZZ7-pp-Feq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="5Md-e8-JcB"/>
+                            <constraint firstItem="ZZ7-pp-Feq" firstAttribute="top" secondItem="0J7-SF-5x3" secondAttribute="bottom" constant="8" symbolic="YES" id="Gzh-Ho-Pl3"/>
+                            <constraint firstItem="ZZ7-pp-Feq" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Iao-AT-vur"/>
+                            <constraint firstItem="0J7-SF-5x3" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="Lfl-NJ-6CU"/>
+                            <constraint firstItem="0J7-SF-5x3" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="MVF-aT-naN"/>
+                            <constraint firstItem="0J7-SF-5x3" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Prt-k7-sTt"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZZ7-pp-Feq" secondAttribute="bottom" constant="20" id="dQn-MW-SKe"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="textView" destination="0J7-SF-5x3" id="O5v-mr-1xp"/>

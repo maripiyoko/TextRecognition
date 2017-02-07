@@ -9,23 +9,13 @@
 import UIKit
 import TesseractOCR
 
-class ViewController: UIViewController, G8TesseractDelegate {
+class ViewController: UIViewController, G8TesseractDelegate,
+    UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var textView: UITextView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if let tesseract = G8Tesseract(language: "eng") {
-            tesseract.delegate = self
-            guard let image = UIImage(named: "demoText.jpg") else {
-                print("input file not found")
-                return
-            }
-            tesseract.image = image.g8_blackAndWhite()
-            tesseract.recognize()
-            textView.text = tesseract.recognizedText
-        }
     }
     
     func progressImageRecognition(for tesseract: G8Tesseract!) {
@@ -37,6 +27,28 @@ class ViewController: UIViewController, G8TesseractDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func cameraButtonClicked(_ sender: UIButton) {
+        // check camera
+        if UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera) {
+            let cameraPicker = UIImagePickerController()
+            cameraPicker.sourceType = UIImagePickerControllerSourceType.camera
+            cameraPicker.delegate = self
+            self.present(cameraPicker, animated: true, completion: nil)
+        } else {
+            print("ERROR : no camera access available.")
+        }
+    }
 
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if let tesseract = G8Tesseract(language: "eng") {
+                tesseract.image = pickedImage.g8_blackAndWhite()
+                tesseract.recognize()
+                textView.text = tesseract.recognizedText
+            }
+        }
+        picker.dismiss(animated: true, completion: nil)
+    }
 }
 
