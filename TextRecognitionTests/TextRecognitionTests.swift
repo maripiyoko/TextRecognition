@@ -7,7 +7,6 @@
 //
 
 import XCTest
-@testable import TextRecognition
 
 class TextRecognitionTests: XCTestCase {
     
